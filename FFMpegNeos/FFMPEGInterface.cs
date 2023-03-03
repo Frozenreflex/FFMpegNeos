@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using NeosModLoader;
 
 namespace FFMPEGNeos
 {
@@ -21,6 +22,7 @@ namespace FFMPEGNeos
                 var paths = path.Split(Path.PathSeparator).ToList();
                 var test = paths.Select(i => Path.Combine(i, command)).FirstOrDefault(File.Exists);
                 cache = string.IsNullOrWhiteSpace(test) ? "notfound" : test;
+                if (cache != "notfound") NeosMod.Msg($"Found {command}: {cache}");
             }
             return cache;
         }
